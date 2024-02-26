@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useContext } from "react";
 import { useState } from "react";
 import { createContext } from "react";
@@ -7,7 +7,7 @@ export const CartContext = createContext();
 
 export const CartContextProvider = ({ children }) => {
   const [showModal, setshowModal] = useState(false);
-  const [cartIteams, setCartIteams] = useState([]);
+  const [cartIteams, setCartIteams] = useState(localStorage.getItem('cartItems') ? JSON.parse(localStorage.getItem('cartItems')) :[]);
 
   const toggle = () => {
     setshowModal(!showModal);
@@ -56,6 +56,18 @@ export const CartContextProvider = ({ children }) => {
       0
     );
   };
+
+  useEffect(() => {
+    const data = localStorage.getItem('cartItems');
+    if (data) {
+      setCartIteams(JSON.parse(data));
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem('cartItems', JSON.stringify(cartIteams));
+  }, [cartIteams]); // Include cartItems as a dependency here
+
 
   return (
     <>
