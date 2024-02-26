@@ -1,8 +1,29 @@
-# React + Vite
+# React E-commerce Application
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Description
 
-Currently, two official plugins are available:
+An ecommerce store built with React, and utilizes third party API's. This ecommerce store enable three main different flows or implementations:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+1. This is single page application using react router
+2. User can add Products to cart 
+3. user can search for a product 
+
+* features:
+  * Context Api implemetaion 
+  * State management
+  * Api calling using axios
+  * Using Local storage to store the Products
+
+
+## Demo
+This application is deployed on Vercel Please check it out : 😍 (https://ecommerce.coderadityasen.vercel.app/)
+
+
+
+## Languages , Tools and Api
+
+- JavaScript
+- React
+- Context Api
+- dummy Product api (https://dummyjson.com/products/)
+
