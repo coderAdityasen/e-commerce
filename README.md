@@ -28,8 +28,8 @@ An ecommerce store built with React, and utilizes third party API's. This ecomme
 
 ## Languages , Tools and Api
 
-- [JavaScript]
-- [React]
-- {Context Api}
+- JavaScript
+- React
+- Context Api
 - [dummy Product api](https://dummyjson.com/products/)
 
