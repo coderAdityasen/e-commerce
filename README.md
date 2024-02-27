@@ -18,12 +18,14 @@ An ecommerce store built with React, and utilizes third party API's. This ecomme
 1. This is single page application using react router
 2. User can add Products to cart 
 3. user can search for a product 
+4. Loading animation added 
 
 * features:
   * Context Api implemetaion 
   * State management
   * Api calling using axios
   * Using Local storage to store the Products
+  * loading animation with skeleton while fetching the data
 
 
 ## Languages , Tools and Api
