@@ -31,8 +31,7 @@ export const CartContextProvider = ({ children }) => {
   };
 
   const removeFromCart = (item) => {
-    const isItemInCart = cartIteams.find((cartItem) => cartItem.id === item.id);
-
+    const isItemInCart = cartIteams.find((cartItem) => cartItem.id == item.id);
     if (isItemInCart.quantity === 1) {
       setCartIteams(cartIteams.filter((cartItem) => cartItem.id !== item.id));
     } else {

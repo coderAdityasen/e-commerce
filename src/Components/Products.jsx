@@ -9,7 +9,7 @@ export default function Products() {
 
   const [search , setSearch] = useState("")
   const [products, setProducts] = useState([]);
-  const { showModal, toggle , cartIteams, removeFromCart, addToCart } = useContext(CartContext); // Use the context directly
+  const { cartIteams, removeFromCart, addToCart } = useContext(CartContext); // Use the context directly
 
 
   useEffect(() => {
@@ -128,7 +128,7 @@ export default function Products() {
                   <button
                     className="px-4 py-2 bg-gray-800 text-white text-xs font-bold uppercase rounded hover:bg-gray-700 focus:outline-none focus:bg-gray-700"
                     onClick={() =>{
-						handleRemoveFromCart()
+						handleRemoveFromCart(product)
 						removeFromCart(product)
 					}}
                   >
