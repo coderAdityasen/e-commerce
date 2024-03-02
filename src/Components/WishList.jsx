@@ -44,7 +44,7 @@ function WishList() {
 			clear list
 		</button>
 	  </div>
-      <div >
+      <div className='my-24 grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 px-10'>
         {wishlistItems.map((product) => (
           <div
             key={product.id}
