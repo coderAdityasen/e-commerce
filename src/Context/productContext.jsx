@@ -6,13 +6,36 @@ import { createContext } from "react";
 export const CartContext = createContext();
 
 export const CartContextProvider = ({ children }) => {
+  
+  const [like , setLike] = useState(false)
   const [showModal, setshowModal] = useState(false);
-  const [cartIteams, setCartIteams] = useState(localStorage.getItem('cartItems') ? JSON.parse(localStorage.getItem('cartItems')) :[]);
+  const [cartIteams, setCartIteams] = useState(
+    localStorage.getItem("cartItems")
+      ? JSON.parse(localStorage.getItem("cartItems"))
+      : []
+  );
+  const [wishlistItems, setWishlistItems] = useState(
+    []
+  );
 
   const toggle = () => {
     setshowModal(!showModal);
   };
 
+  const addToWishlist = (item) => {
+    setWishlistItems([...wishlistItems, item]);
+    setLike(true)
+  
+  };
+
+  const removeFromWishlist = (item) =>{
+    setLike(false)
+    setWishlistItems(wishlistItems.filter((prod)=> prod.id !== item.id))
+  }
+
+  const clearWishlist = (item) =>{
+    setWishlistItems([])
+  }
 
   const addToCart = (item) => {
     const isItemInCart = cartIteams.find((cartItem) => cartItem.id === item.id);
@@ -57,22 +80,28 @@ export const CartContextProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    const data = localStorage.getItem('cartItems');
+    const data = localStorage.getItem("cartItems");
     if (data) {
       setCartIteams(JSON.parse(data));
     }
   }, []);
 
   useEffect(() => {
-    localStorage.setItem('cartItems', JSON.stringify(cartIteams));
+    localStorage.setItem("cartItems", JSON.stringify(cartIteams));
   }, [cartIteams]); // Include cartItems as a dependency here
-
 
   return (
     <>
       <CartContext.Provider
         value={{
-          showModal, toggle,
+          like,
+          clearWishlist,
+          setLike,
+          wishlistItems,
+          addToWishlist,
+          removeFromWishlist,
+          showModal,
+          toggle,
           cartIteams,
           addToCart,
           removeFromCart,

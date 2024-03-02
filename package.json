@@ -28,5 +28,10 @@
     "postcss": "^8.4.35",
     "tailwindcss": "^3.4.1",
     "vite": "^5.1.4"
-  }
+  },
+  "description": "This application is deployed on Vercel Please check it out: 😍[here](https://ecommerce.coderadityasen.vercel.app/)",
+  "main": "postcss.config.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }

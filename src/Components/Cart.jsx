@@ -5,7 +5,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { Link } from "react-router-dom";
 
 function Cart() {
-  const { toggle, cartIteams, addToCart, removeFromCart, clearCart, getCartTotal } =
+  const {  cartIteams, addToCart, removeFromCart, clearCart, getCartTotal } =
     useContext(CartContext);
 
   const notifyRemovedFromCart = (item) =>
