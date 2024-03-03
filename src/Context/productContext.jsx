@@ -6,36 +6,34 @@ import { createContext } from "react";
 export const CartContext = createContext();
 
 export const CartContextProvider = ({ children }) => {
-  
-  const [like , setLike] = useState(false)
   const [showModal, setshowModal] = useState(false);
   const [cartIteams, setCartIteams] = useState(
     localStorage.getItem("cartItems")
       ? JSON.parse(localStorage.getItem("cartItems"))
       : []
   );
-  const [wishlistItems, setWishlistItems] = useState(
-    []
-  );
+  const [wishlistItems, setWishlistItems] = useState([]);
 
   const toggle = () => {
     setshowModal(!showModal);
   };
 
   const addToWishlist = (item) => {
-    setWishlistItems([...wishlistItems, item]);
-    setLike(true)
-  
+    setWishlistItems([...wishlistItems, { ...item, wishlist: true }]);
+    // wishlist : true
   };
 
-  const removeFromWishlist = (item) =>{
-    setLike(false)
-    setWishlistItems(wishlistItems.filter((prod)=> prod.id !== item.id))
-  }
+  const removeFromWishlist = (item) => {
+    setWishlistItems(
+      wishlistItems.map((prod) =>
+        prod.id !== item.id ? prod : { ...prod, wishlist: false }
+      )
+    );
+  };
 
-  const clearWishlist = (item) =>{
-    setWishlistItems([])
-  }
+  const clearWishlist = () => {
+    setWishlistItems([]);
+  };
 
   const addToCart = (item) => {
     const isItemInCart = cartIteams.find((cartItem) => cartItem.id === item.id);
@@ -94,9 +92,7 @@ export const CartContextProvider = ({ children }) => {
     <>
       <CartContext.Provider
         value={{
-          like,
           clearWishlist,
-          setLike,
           wishlistItems,
           addToWishlist,
           removeFromWishlist,

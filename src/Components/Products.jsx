@@ -194,12 +194,15 @@ export default function Products() {
         </h1>
 
         <div>
-        <Link to="/wishlist">
+          <button className="px-3 py-2 bg-pink-600 text-white font-bold rounded-xl">
+          <Link to="/wishlist">
         wishlist
         </Link>
+          </button>
+       
       </div>
 
-		<div className=" mr-[rem] xl:mr-[-50rem] lg:mr-[-20rem] px-2">
+		<div className=" mr-[1rem] xl:mr-[-19rem] lg:mr-[-20rem] px-2">
 
      
 		<form onSubmit={handleSubmit}>
@@ -282,15 +285,17 @@ export default function Products() {
 
                 </div>
               )
-              
               }
-
 <button
   onClick={()=>{
-  addToWishlist(product)
+    if(!product.wishlist) {
+      addToWishlist(product)
+    }else{
+      removeFromWishlist(product)
+    }
   }}
 className="px-4 py-2 mx-3">
- add wishlist
+ {!product.wishlist ? "Add to wishlist" : "Remove from wishlist"}
 </button>
             </div>
           </div>
