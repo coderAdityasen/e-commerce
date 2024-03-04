@@ -11,7 +11,7 @@ export default function Products() {
   const [products, setProducts] = useState([]);
   const [loading , setLoading] = useState(true)
   const [like , setLike] = useState(false)
-  const { cartIteams, removeFromCart, addToCart  , addToWishlist } = useContext(CartContext); // Use the context directly
+  const { cartIteams, removeFromCart, addToCart  , wishlistItems , addToWishlist , removeFromWishlist } = useContext(CartContext); // Use the context directly
 
 
 
@@ -33,7 +33,7 @@ export default function Products() {
         // Update the products state with fetched data
         setProducts(fetchedData.data.products);
       } catch (error) {
-        console.error('Error fetching data:', error);
+        console.error('Error fetching data:');
       } finally {
         // Set loading state to false after 3 seconds
         setLoading(false);
@@ -282,20 +282,16 @@ export default function Products() {
                   >
                     -
                   </button>
-
                 </div>
               )
               }
 <button
   onClick={()=>{
-    if(!product.wishlist) {
-      addToWishlist(product)
-    }else{
-      removeFromWishlist(product)
-    }
-  }}
+ addToWishlist(product)
+  }
+}
 className="px-4 py-2 mx-3">
- {!product.wishlist ? "Add to wishlist" : "Remove from wishlist"}
+ Add to wishlist
 </button>
             </div>
           </div>
@@ -304,7 +300,6 @@ className="px-4 py-2 mx-3">
     </div>
     )
     }
-    
     </>
   );
 }
