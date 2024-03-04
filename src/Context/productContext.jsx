@@ -23,13 +23,10 @@ export const CartContextProvider = ({ children }) => {
     // wishlist : true
   };
 
+
   const removeFromWishlist = (item) => {
-    setWishlistItems(
-      wishlistItems.map((prod) =>
-        prod.id !== item.id ? prod : { ...prod, wishlist: false }
-      )
-    );
-  };
+    setWishlistItems(wishlistItems.filter((prod) => prod.id !==item.id));
+ };
 
   const clearWishlist = () => {
     setWishlistItems([]);
@@ -93,7 +90,9 @@ export const CartContextProvider = ({ children }) => {
       <CartContext.Provider
         value={{
           clearWishlist,
+          removeFromWishlist,
           wishlistItems,
+          setWishlistItems,
           addToWishlist,
           removeFromWishlist,
           showModal,

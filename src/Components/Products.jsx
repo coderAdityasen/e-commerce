@@ -10,11 +10,7 @@ export default function Products() {
   const [search , setSearch] = useState("")
   const [products, setProducts] = useState([]);
   const [loading , setLoading] = useState(true)
-  const [like , setLike] = useState(false)
-  const { cartIteams, removeFromCart, addToCart  , wishlistItems , addToWishlist , removeFromWishlist } = useContext(CartContext); // Use the context directly
-
-
-
+  const { cartIteams, removeFromCart, addToCart  , wishlistItems , addToWishlist , removeFromWishlist  } = useContext(CartContext); 
 
   useEffect(() => {
     const controller = new AbortController();
@@ -285,14 +281,27 @@ export default function Products() {
                 </div>
               )
               }
-<button
-  onClick={()=>{
- addToWishlist(product)
-  }
-}
-className="px-4 py-2 mx-3">
- Add to wishlist
-</button>
+<div>
+{!wishlistItems.find((item) => item.id === product.id) ? (
+                    <button
+                      onClick={() => {
+                        addToWishlist(product);
+                      }}
+                      className="px-4 py-2 mx-3"
+                    >
+                      Add to wishlist
+                    </button>
+                  ) : (
+                    <button
+                      onClick={() => {
+                        removeFromWishlist(product);
+                      }}
+                      className="px-4 py-2 mx-3"
+                    >
+                      Remove to wishlist
+                    </button>
+  )}
+</div>
             </div>
           </div>
         ))}
