@@ -76,7 +76,7 @@ export default function Products() {
 
   const handleRemoveFromCart = (product) => {
     removeFromCart(product);
-    notifyRemovedFromCart(product);
+   notifyRemovedFromCart(product);
   };
 
   const handleSubmit = (e) => {
@@ -216,7 +216,6 @@ export default function Products() {
         
           <button
             className="px-4 py-2 bg-gray-800 text-white text-xs font-bold uppercase rounded hover:bg-gray-700 focus:outline-none focus:bg-gray-700"
-            
           >
 			<Link to="/cart">
 				Cart {cartIteams.length}
@@ -239,7 +238,7 @@ export default function Products() {
             <div className="mt-4">
               <h1 className="text-lg uppercase font-bold">{product.title}</h1>
               <p className="mt-2 text-gray-600 text-sm">
-                {product.description.slice(0, 40)}...
+                {product.description.slice(0, 20)}...
               </p>
               <p className="mt-2 text-gray-600">${product.price}</p>
             </div>
@@ -268,12 +267,14 @@ export default function Products() {
                     {cartIteams.find((item) => item.id === product.id)
                       ?.quantity || 0}
                   </p>
-
                   <button
                     className="px-4 py-2 bg-gray-800 text-white text-xs font-bold uppercase rounded hover:bg-gray-700 focus:outline-none focus:bg-gray-700"
                     onClick={() =>{
-						handleRemoveFromCart(product)
-						removeFromCart(product)
+                      if (cartIteams[0].quantity === 1) {
+                        handleRemoveFromCart(product);
+                      } else {
+                        removeFromCart(product);
+                      }
 					}}
                   >
                     -
@@ -289,7 +290,7 @@ export default function Products() {
                       }}
                       className="px-4 py-2 mx-3"
                     >
-                      Add to wishlist
+                     💛
                     </button>
                   ) : (
                     <button
@@ -298,7 +299,7 @@ export default function Products() {
                       }}
                       className="px-4 py-2 mx-3"
                     >
-                      Remove to wishlist
+                      ❤️
                     </button>
   )}
 </div>

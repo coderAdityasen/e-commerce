@@ -6,8 +6,6 @@ function WishList() {
   const { cartIteams, wishlistItems, addToCart, removeFromCart, removeFromWishlist,  clearWishlist } = useContext(CartContext);
 
 
-  console.log(wishlistItems)
-
   const handleRemoveFromCart = (product) => {
     removeFromCart(product);
   };
@@ -33,18 +31,29 @@ function WishList() {
       </nav>
 
       {/* Wishlist items */}
-      <div>
-        <button onClick={() => clearWishlist()}>
-          Clear list
-        </button>
-      </div>
-      <div className='my-24 grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 px-10'>
-      </div>
+      
+    </div>
+  
+    <div>
+    {
+  wishlistItems.every(prod => !prod.wishlist) 
+    ?( <div className=''>
+       <h1 className=' my-[10rem] font-bold text-center text-4xl'>Add Some Item From
+      <span className='text-green-600 '><Link to="/"> Here</Link></span> 
+       </h1> </div>)
+    : (<div className='w-full mx-auto my-5 text-center'>
+    <button className='px-3 py-2 bg-blue-600 rounded-xl text-white' onClick={() => clearWishlist()}>
+      Clear list
+    </button>
+  </div>)
+}
     </div>
 
-    {wishlistItems.map((product) => {
-     return product.wishlist ? (<>
-      <div
+    <div className='my-6 grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 px-10'>
+    {
+     
+    wishlistItems.map((product) => (
+      !product.wishlist ? null : (<> <div
             key={product.id}
             className="bg-white shadow-md rounded-lg px-10 py-10"
           >
@@ -105,12 +114,13 @@ function WishList() {
     console.log(wishlistItems)
   }}
 className="px-4 py-2 mx-3">
- set wishlist false
+ ❤️
 </button>
             </div>
-          </div>
-     </>) : null
-    })}
+          </div></>)
+    ))}
+    </div>
+   
     </>
   );
 }
