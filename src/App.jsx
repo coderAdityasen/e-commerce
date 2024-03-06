@@ -3,6 +3,7 @@ import Cart from "./Components/Cart";
 import Products from "./Components/Products";
 import { CartContextProvider } from "./Context/productContext";
 import WishList from "./Components/WishList";
+import ProductLandingPage from "./Components/productLandingPage";
 
 function App() {
 
@@ -12,6 +13,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Products />} />
+          <Route path="/:prodid" element={<ProductLandingPage />} />
           <Route path="/cart" element={<Cart/>} />
           <Route path="/wishlist" element={<WishList/>}/>
         </Routes>

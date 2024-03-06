@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useEffect } from "react";
 import { useContext } from "react";
 import { useState } from "react";
@@ -6,12 +7,34 @@ import { createContext } from "react";
 export const CartContext = createContext();
 
 export const CartContextProvider = ({ children }) => {
+  const [search, setSearch] = useState("");
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
   const [showModal, setshowModal] = useState(false);
   const [cartIteams, setCartIteams] = useState(
     localStorage.getItem("cartItems")
       ? JSON.parse(localStorage.getItem("cartItems"))
       : []
   );
+  useEffect(() => {
+    const controller = new AbortController();
+    setLoading(true);
+
+    (async () => {
+      const fetchedData = await axios.get(
+        "https://dummyjson.com/products/search?q=" + search,
+        {
+          signal: controller.signal,
+        }
+      );
+      setProducts(fetchedData.data.products);
+      setLoading(false);
+    })();
+    return () => {
+      controller.abort();
+    };
+  }, [search]);
+
   const [wishlistItems, setWishlistItems] = useState([]);
 
   const toggle = () => {
@@ -23,10 +46,9 @@ export const CartContextProvider = ({ children }) => {
     // wishlist : true
   };
 
-
   const removeFromWishlist = (item) => {
-    setWishlistItems(wishlistItems.filter((prod) => prod.id !==item.id));
- };
+    setWishlistItems(wishlistItems.filter((prod) => prod.id !== item.id));
+  };
 
   const clearWishlist = () => {
     setWishlistItems([]);
@@ -47,7 +69,6 @@ export const CartContextProvider = ({ children }) => {
       setCartIteams([...cartIteams, { ...item, quantity: 1 }]);
     }
   };
-
   const removeFromCart = (item) => {
     const isItemInCart = cartIteams.find((cartItem) => cartItem.id == item.id);
     if (isItemInCart.quantity === 1) {
@@ -62,7 +83,6 @@ export const CartContextProvider = ({ children }) => {
       );
     }
   };
-
   const clearCart = () => {
     setCartIteams([]);
   };
@@ -89,6 +109,12 @@ export const CartContextProvider = ({ children }) => {
     <>
       <CartContext.Provider
         value={{
+          search,
+          setSearch,
+          loading,
+          setLoading,
+          products,
+          setProducts,
           clearWishlist,
           removeFromWishlist,
           wishlistItems,

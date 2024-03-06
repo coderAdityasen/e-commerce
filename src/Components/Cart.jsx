@@ -5,9 +5,8 @@ import "react-toastify/dist/ReactToastify.css";
 import { Link } from "react-router-dom";
 
 function Cart() {
-  const {  cartIteams, addToCart, removeFromCart, clearCart, getCartTotal } =
+  const {cartIteams, addToCart, removeFromCart, clearCart, getCartTotal} =
     useContext(CartContext);
-
   const notifyRemovedFromCart = (item) =>
     toast.error(`${item.title} removed from cart!`, {
       position: "top-center",
@@ -45,15 +44,12 @@ function Cart() {
 
   return (
     <>
-	
-      
         <div className="  flex-col flex items-center inset-0  bg-white dark:bg-black gap-8  p-10  text-black dark:text-white font-normal uppercase text-sm">
           <ToastContainer />
           <h1 className="text-2xl font-bold">Cart</h1>
           <div className="absolute right-16 top-10">
             <button
               className="px-4 py-2 bg-gray-800 text-white text-xs font-bold uppercase rounded hover:bg-gray-700 focus:outline-none focus:bg-gray-700"
-              
             >
 				<Link to="/">
 				Close
