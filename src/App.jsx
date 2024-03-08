@@ -4,6 +4,8 @@ import Products from "./Components/Products";
 import { CartContextProvider } from "./Context/productContext";
 import WishList from "./Components/WishList";
 import ProductLandingPage from "./Components/productLandingPage";
+import CarouselComponent from "./Components/CarouselComponent";
+import Home from "./Copops/Home";
 
 function App() {
 
@@ -12,10 +14,11 @@ function App() {
       <CartContextProvider>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Products />} />
+          <Route path="/home" element={<Products />} />
           <Route path="/:prodid" element={<ProductLandingPage />} />
           <Route path="/cart" element={<Cart/>} />
           <Route path="/wishlist" element={<WishList/>}/>
+          <Route path="/" element={<Home/>}/>
         </Routes>
       </BrowserRouter>
       </CartContextProvider>

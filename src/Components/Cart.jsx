@@ -3,6 +3,7 @@ import { CartContext } from "../Context/productContext";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Link } from "react-router-dom";
+import Navbar from "../Copops/Navbar";
 
 function Cart() {
   const {cartIteams, addToCart, removeFromCart, clearCart, getCartTotal} =
@@ -44,10 +45,11 @@ function Cart() {
 
   return (
     <>
+    <Navbar/>
         <div className="  flex-col flex items-center inset-0  bg-white dark:bg-black gap-8  p-10  text-black dark:text-white font-normal uppercase text-sm">
           <ToastContainer />
           <h1 className="text-2xl font-bold">Cart</h1>
-          <div className="absolute right-16 top-10">
+          <div className=" my-10 absolute right-16 top-10">
             <button
               className="px-4 py-2 bg-gray-800 text-white text-xs font-bold uppercase rounded hover:bg-gray-700 focus:outline-none focus:bg-gray-700"
             >

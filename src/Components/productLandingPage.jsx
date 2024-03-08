@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { CartContext } from "../Context/productContext";
 import { useParams } from "react-router-dom";
-import Navbar from "./Navbar";
+import Navbar from "../Copops/Navbar";
 
 function ProductLandingPage() {
   const {
@@ -21,8 +21,8 @@ function ProductLandingPage() {
 
   return (
     <>
-      <Navbar />
-      <div className="w-full container mx-auto px-4 py-8">
+      <Navbar/>
+      <div className="w-full my-10 container mx-auto px-4 py-8">
         {productdetail.length > 0 ? (
           <>
             <div className="mx-16 flex flex-col lg:flex-row justify-center items-center lg:items-start">

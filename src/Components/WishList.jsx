@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { CartContext } from "../Context/productContext";
+import Navbar from "../Copops/Navbar";
 
 function WishList() {
   const {
@@ -20,24 +21,7 @@ function WishList() {
     <>
       <div>
         {/* Navbar */}
-        <nav className="bg-gray-800 p-4">
-          <div className="container mx-auto flex justify-between items-center">
-            <Link to="/" className="text-white text-lg font-semibold">
-              Home
-            </Link>
-            <div>
-              <Link
-                to="/cart"
-                className="text-white text-lg font-semibold mr-4"
-              >
-                Cart
-              </Link>
-              <Link to="/wishlist" className="text-white text-lg font-semibold">
-                Wishlist
-              </Link>
-            </div>
-          </div>
-        </nav>
+       <Navbar/>
 
         {/* Wishlist items */}
       </div>
