@@ -22,7 +22,7 @@ function Home() {
 {/* products cards  */}
 
 	<div>
-	<h1 className='text-center text-4xl font-bold underline'>Urban Shirts</h1>
+	<h1 className='dark:text-white my-10 text-center text-4xl font-bold underline'>Urban Shirts</h1>
 
 		<ProductsComp/>
 	</div>
@@ -32,7 +32,7 @@ function Home() {
 	</div>
 	
 	<div>
-	<h1 className='text-center text-4xl font-bold underline'>Womens Collection</h1>
+	<h1 className='text-center text-4xl font-bold underline dark:text-white my-10'>Womens Collection</h1>
 		<ProductsComp/>
 	</div>
 
@@ -41,7 +41,7 @@ function Home() {
 	</div>
 
 	<div className='ml-20 my-10 text-3xl flex items-center gap-4'>
-		<span className='block h-[50px] w-[12px] bg-yellow-300 text-yellow-300'>1</span> <span>BEST SELLER</span>
+		<span className='block h-[50px] w-[12px] bg-yellow-300 text-yellow-300 '>1</span> <span className='dark:text-white'>BEST SELLER</span>
 		<div></div>
 	</div>
 

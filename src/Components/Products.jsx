@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from "react";
+import {  useContext } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { CartContext } from "../Context/productContext";
@@ -12,13 +12,7 @@ export default function Products() {
   const {
     loading,
     setSearch,
-    products,
     cartIteams,
-    removeFromCart,
-    addToCart,
-    wishlistItems,
-    addToWishlist,
-    removeFromWishlist,
   } = useContext(CartContext);
 
   const notifyAddedToCart = (item) =>

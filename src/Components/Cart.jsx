@@ -46,7 +46,7 @@ function Cart() {
   return (
     <>
     <Navbar/>
-        <div className="  flex-col flex items-center inset-0  bg-white dark:bg-black gap-8  p-10  text-black dark:text-white font-normal uppercase text-sm">
+        <div className="flex-col flex items-center inset-0 h-[100vh]  bg-white dark:bg-black gap-8  p-10  text-black dark:text-white font-normal uppercase text-sm">
           <ToastContainer />
           <h1 className="text-2xl font-bold">Cart</h1>
           <div className=" my-10 absolute right-16 top-10">
@@ -65,18 +65,21 @@ function Cart() {
                   className="flex justify-between items-center"
                   key={item.id}
                 >
-                  <div className="flex gap-4">
+                  <div className="flex gap-10 justify-between">
+                    <div className="flex items-center gap-11 ">
                     <img
                       src={item.thumbnail}
                       alt={item.title}
                       className="rounded-md w-24 h-24"
                     />
-                    <div className="flex gap-8 justify-center">
+                    <div className="flex gap-8 justify-center dark:text-white">
                       <h1 className="text-lg font-bold">{item.title}</h1>
-                      <p className="text-gray-600">${item.price}</p>
+                      <p className="text-gray-600 dark:text-white">${item.price}</p>
                     </div>
+                    </div>
+                   
                   </div>
-                  <div className="flex gap-4">
+                  <div className="flex ml-10 gap-4">
                     <button
                       className="px-4 py-2 bg-gray-800 text-white text-xs font-bold uppercase rounded hover:bg-gray-700 focus:outline-none focus:bg-gray-700"
                       onClick={() => {
@@ -108,7 +111,7 @@ function Cart() {
           </div>
           {cartIteams.length > 0 ? (
             <div className="flex flex-col justify-between items-center">
-              <h1 className="text-lg font-bold">Total: ${getCartTotal()}</h1>
+              <h1 className="text-lg font-bold ">Total: ${getCartTotal()}</h1>
               <button
                 className="px-4 py-2 bg-gray-800 text-white text-xs font-bold uppercase rounded hover:bg-gray-700 focus:outline-none focus:bg-gray-700"
                 onClick={() => {
@@ -120,7 +123,7 @@ function Cart() {
               </button>
             </div>
           ) : (
-            <h1 className="text-lg font-bold">Your cart is empty</h1>
+            <h1 className="text-lg font-bold dark:text-white">Your cart is empty</h1>
           )}
         </div>
       

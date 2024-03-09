@@ -18,19 +18,19 @@ function ProductsComp() {
 		autoplay: true,
 		slidesToShow: 4,
 		slidesToScroll: 3
-	  };
+  }
 
 	 
 	return (
 		<>
-		<div className='w-[80%] mx-auto'>
+		<div className='w-[80%] mx-auto   dark:bg-gray-900'>
 
 		
 		<Slider {...settings}>
         {products.map((product) => (
               <div
                 key={product.id}
-                className="bg-white shadow-md rounded-lg px-10 py-10"
+                className="bg-white dark:bg-blue-gray-900 shadow-md rounded-lg px-10 py-10"
               >
                 <Link to={`/${product.id}`}>
                   <img
@@ -39,13 +39,13 @@ function ProductsComp() {
                     className="rounded-md h-48"
                   />
                   <div className="mt-4">
-                    <h1 className="text-lg uppercase font-bold">
+                    <h1 className="dark:text-white text-lg uppercase font-bold">
                       {product.title.slice(0,10)}
                     </h1>
-                    <p className="mt-2 text-gray-600 text-sm">
+                    <p className="mt-2 text-gray-600 dark:text-gray-300 text-sm">
                       Urban Shirts
                     </p>
-                    <p className="mt-2 text-gray-600">₹{product.price} <span className='text-gray-400 line-through'>₹{product.price + 100}</span> <span className='text-green-500'> &#40;60% Off&#41; </span> </p>
+                    <p className="mt-2 text-gray-600 dark:text-white">₹{product.price} <span className='text-gray-400 line-through'>₹{product.price + 100}</span> <span className='text-green-500'> &#40;60% Off&#41; </span> </p>
                   </div>
                 </Link>
               </div>

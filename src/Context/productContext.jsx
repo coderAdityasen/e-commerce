@@ -7,6 +7,9 @@ import { createContext } from "react";
 export const CartContext = createContext();
 
 export const CartContextProvider = ({ children }) => {
+  const [themeMode, setThemeMode] = useState("light")
+
+
   const [search, setSearch] = useState("");
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -35,6 +38,19 @@ export const CartContextProvider = ({ children }) => {
     fetchData();
   
   }, []);
+  
+  const lightTheme = () => {
+    setThemeMode("light")
+  }
+
+  const darkTheme = () => {
+    setThemeMode("dark")
+  }
+
+  useEffect(() => {
+    document.querySelector('html').classList.remove("light", "dark")
+    document.querySelector('html').classList.add(themeMode)
+  }, [themeMode])
   
 
   const [wishlistItems, setWishlistItems] = useState([]);
@@ -111,6 +127,9 @@ export const CartContextProvider = ({ children }) => {
     <>
       <CartContext.Provider
         value={{
+          lightTheme,
+          darkTheme,
+          themeMode,
           search,
           setSearch,
           loading,

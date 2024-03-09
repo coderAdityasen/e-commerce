@@ -21,7 +21,7 @@ function ProductLandingPage() {
   return (
     <>
       <Navbar/>
-      <div className="w-full my-10 container mx-auto px-4 py-8">
+      <div className="w-full dark:text-white my-10 container mx-auto px-4 py-8">
         {productdetail.length > 0 ? (
           <>
             <div className="mx-16 flex flex-col lg:flex-row justify-center items-center lg:items-start">
@@ -37,7 +37,7 @@ function ProductLandingPage() {
                 <h1 className="text-2xl font-bold mb-4">
                   {productdetail[0].title}
                 </h1>
-                <p className="text-gray-700 mb-4">
+                <p className="text-gray-700 dark:text-white mb-4">
                   {productdetail[0].description}
                 </p>
 
@@ -73,7 +73,7 @@ function ProductLandingPage() {
                         >
                           +
                         </button>
-                        <p className="text-gray-600">
+                        <p className="text-gray-600 dark:text-white">
                           {cartIteams.find(
                             (item) => item.id === productdetail[0].id
                           )?.quantity || 0}
