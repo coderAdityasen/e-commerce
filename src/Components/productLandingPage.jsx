@@ -17,7 +17,6 @@ function ProductLandingPage() {
 
   // Ensure products exist and prodid is valid before accessing productdetail
   const productdetail = products.filter((item) => item.id == prodid);
-  console.log(productdetail);
 
   return (
     <>

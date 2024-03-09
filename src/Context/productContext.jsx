@@ -17,23 +17,25 @@ export const CartContextProvider = ({ children }) => {
       : []
   );
   useEffect(() => {
-    const controller = new AbortController();
     setLoading(true);
-
-    (async () => {
-      const fetchedData = await axios.get(
-        "https://dummyjson.com/products/search?q=" + search,
-        {
-          signal: controller.signal,
-        }
-      );
-      setProducts(fetchedData.data.products);
-      setLoading(false);
-    })();
-    return () => {
-      controller.abort();
+  
+    const fetchData = async () => {
+      try {
+        const fetchedData = await axios.get(
+          "https://dummyjson.com/products"
+        );
+        setProducts(fetchedData.data.products);
+        setLoading(false);
+      } catch (error) {
+        console.error("Error fetching data:" , error);
+        setLoading(false);
+      }
     };
-  }, [search]);
+  
+    fetchData();
+  
+  }, []);
+  
 
   const [wishlistItems, setWishlistItems] = useState([]);
 
@@ -42,7 +44,7 @@ export const CartContextProvider = ({ children }) => {
   };
 
   const addToWishlist = (item) => {
-    setWishlistItems([...wishlistItems, { ...item, wishlist: true }]);
+    setWishlistItems([...wishlistItems ,{...item}]);
     // wishlist : true
   };
 
@@ -103,7 +105,7 @@ export const CartContextProvider = ({ children }) => {
 
   useEffect(() => {
     localStorage.setItem("cartItems", JSON.stringify(cartIteams));
-  }, [cartIteams]); // Include cartItems as a dependency here
+  }, [cartIteams]);
 
   return (
     <>
@@ -116,7 +118,6 @@ export const CartContextProvider = ({ children }) => {
           products,
           setProducts,
           clearWishlist,
-          removeFromWishlist,
           wishlistItems,
           setWishlistItems,
           addToWishlist,

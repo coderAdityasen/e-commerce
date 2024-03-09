@@ -51,10 +51,6 @@ export default function Products() {
       },
     });
 
-  const handleRemoveFromCart = (product) => {
-    removeFromCart(product);
-    notifyRemovedFromCart(product);
-  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
