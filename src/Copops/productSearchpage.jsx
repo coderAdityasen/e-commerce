@@ -1,35 +1,18 @@
 import React, { useContext } from 'react'
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import { CartContext } from '../Context/productContext';
-import { Link } from 'react-router-dom';
+import { CartContext } from '../Context/productContext'
+import { useParams } from 'react-router-dom'
 
-
-function ProductsComp() {
-	const {
-		products,
-	  } = useContext(CartContext);
-
-	const settings = {
-		dots: true,
-		infinite: true,
-		speed: 500,
-		autoplay: true,
-		slidesToShow: 4,
-		slidesToScroll: 3
-  }
-
+function ProductSearchpage() {
+	const {search} = useParams;
+	const {products} = useContext(CartContext)
+	
 	return (
 		<>
-		<div className='w-[80%] mx-auto   dark:bg-gray-900'>
-
-		
-		<Slider {...settings}>
-        {products.map((product) => (
+		<div>
+		{products.map((product) => (
               <div
                 key={product.id}
-                className="bg-white dark:bg-blue-gray-900 shadow-md dark:border-x-8 dark:border-gray-900 border-x-8 border-white rounded-lg px-10 py-10"
+                className="bg-white dark:bg-blue-gray-900 shadow-md dark:border-x-8 dark:border-gray-900 rounded-lg px-10 py-10"
               >
                 <Link to={`/${product.id}`}>
                   <img
@@ -49,13 +32,9 @@ function ProductsComp() {
                 </Link>
               </div>
             ))}
-      </Slider>
-		 </div>
-
-		
-		
+		</div>
 		</>
 	)
 }
 
-export default ProductsComp
+export default ProductSearchpage

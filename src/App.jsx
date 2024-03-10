@@ -6,6 +6,7 @@ import WishList from "./Components/WishList";
 import ProductLandingPage from "./Components/productLandingPage";
 import CarouselComponent from "./Components/CarouselComponent";
 import Home from "./Copops/Home";
+import ProductSearchpage from "./Copops/productSearchpage";
 
 function App() {
 
@@ -19,6 +20,7 @@ function App() {
           <Route path="/cart" element={<Cart/>} />
           <Route path="/wishlist" element={<WishList/>}/>
           <Route path="/" element={<Home/>}/>
+          <Route path="search" element={<ProductSearchpage/>}/>
         </Routes>
       </BrowserRouter>
       </CartContextProvider>

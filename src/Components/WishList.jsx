@@ -14,19 +14,17 @@ function WishList() {
 
   return (
     <>
-      <div>
         {/* Navbar */}
-        <Navbar />
-      </div>
-
-      <div>
+       
+      
+         <Navbar />
         {wishlistItems.length === 0 ? (
-          <div className="w-full mx-auto my-5 text-center">
-            <h1 className=" my-[10rem] font-bold text-center text-4xl">
+          <div className="w-full mx-auto  text-center">
+            <h1 className=" dark:text-white py-32 font-bold text-center text-4xl">
               Wishlist is Empty
             </h1>
-            <span className="text-green-600 ">
-              <Link to="/">Add some items from here</Link>
+            <span className="text-green-600 text-2xl dark:text-blue-300 ">
+              <Link to="/">Add Some Items From Here</Link>
             </span>
           </div>
         ) : (
@@ -101,7 +99,7 @@ function WishList() {
             </div>
           </div>
         )}
-      </div>
+      
     </>
   );
 }

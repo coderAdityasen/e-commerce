@@ -1,12 +1,20 @@
-import React, { useContext } from 'react'
-import { Link } from 'react-router-dom'
+import React, { useContext, useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 import { CartContext } from '../Context/productContext';
 import ThemeBtn from '../Components/ThemeButton';
 
 function Navbar() {
+  const [search , setSearch] = useState("")
+  const navigate = useNavigate();
 	const {
+
 		cartIteams,
 	  } = useContext(CartContext);
+
+    const handlesearchbtn = ()=>{
+      navigate(`/${search}`)
+      console.log(search);
+    }
 	return (
 		<>
 		<div className='dark:bg-gray-900 dark:text-white fixed top-0 z-10 w-full  overflow-hidden text-center flex justify-between px-32 bg-white  py-3 items-center'>
@@ -18,10 +26,34 @@ function Navbar() {
  <li><Link>MEN'S SHIRTS</Link></li>
 </ul>
 
-<ul className="z-[1] flex gap-5 justify-end ">
- <li>
-   <Link>
-   <svg
+<ul className="z-[1] flex gap-5 items-center justify-end ">
+  <li>
+  <form onSubmit={(e)=>{
+e.preventDefault()
+
+  }} className="max-w-md mx-auto">
+  <label
+    htmlFor="default-search"
+    className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"
+  >
+    Search
+  </label>
+  <div className="relative">
+   
+    <input
+    value={search}
+    onChange={(e)=>setSearch(e.target.value)}
+      type="search"
+      id="default-search"
+      className="block w-full px-6 py-2 ps-2 text-sm text-gray-900 border border-gray-300 rounded-md bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+      placeholder="Search iphone,shirts ..."
+    />
+    <button
+    onClick={handlesearchbtn}
+      type="submit"
+      className="text-white absolute end-0 bottom-0.5  bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-2 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+    >
+     <svg
         width={20}
         height={20}
         viewBox="0 0 24 24"
@@ -36,8 +68,11 @@ function Navbar() {
           strokeLinecap="round"
         />
       </svg>  
-      </Link>
-   </li>
+    </button>
+  </div>
+</form>
+
+  </li>
 
  <li><Link to="/wishlist">
  <svg
