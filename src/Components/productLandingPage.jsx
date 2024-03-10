@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { CartContext } from "../Context/productContext";
 import { useParams } from "react-router-dom";
 import Navbar from "../Copops/Navbar";
+import ProductsComp from "../Copops/ProductsComp";
 
 function ProductLandingPage() {
   const {
@@ -119,7 +120,12 @@ function ProductLandingPage() {
         ) : (
           <p>Loading...</p>
         )}
+
+        
       </div>
+      <div>
+          <ProductsComp/>
+        </div>
     </>
   );
 }

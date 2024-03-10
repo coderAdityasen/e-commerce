@@ -46,7 +46,7 @@ function Cart() {
   return (
     <>
     <Navbar/>
-        <div className="flex-col flex items-center inset-0 h-[100vh]  bg-white dark:bg-black gap-8  p-10  text-black dark:text-white font-normal uppercase text-sm">
+        <div className="flex-col flex items-center inset-0   bg-white dark:bg-black gap-8  p-10  text-black dark:text-white font-normal uppercase text-sm">
           <ToastContainer />
           <h1 className="text-2xl font-bold">Cart</h1>
           <div className=" my-10 absolute right-16 top-10">
