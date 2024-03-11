@@ -1,20 +1,11 @@
 import React, { useContext, useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { CartContext } from '../Context/productContext';
 import ThemeBtn from '../Components/ThemeButton';
 
 function Navbar() {
-  const [search , setSearch] = useState("")
-  const navigate = useNavigate();
-	const {
+	const { cartIteams , search , setSearch } = useContext(CartContext);
 
-		cartIteams,
-	  } = useContext(CartContext);
-
-    const handlesearchbtn = ()=>{
-      navigate(`/${search}`)
-      console.log(search);
-    }
 	return (
 		<>
 		<div className='dark:bg-gray-900 dark:text-white fixed top-0 z-10 w-full  overflow-hidden text-center flex justify-between px-32 bg-white  py-3 items-center'>
@@ -28,10 +19,7 @@ function Navbar() {
 
 <ul className="z-[1] flex gap-5 items-center justify-end ">
   <li>
-  <form onSubmit={(e)=>{
-e.preventDefault()
-
-  }} className="max-w-md mx-auto">
+    <div  className="max-w-md mx-auto">
   <label
     htmlFor="default-search"
     className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"
@@ -39,7 +27,6 @@ e.preventDefault()
     Search
   </label>
   <div className="relative">
-   
     <input
     value={search}
     onChange={(e)=>setSearch(e.target.value)}
@@ -49,10 +36,10 @@ e.preventDefault()
       placeholder="Search iphone,shirts ..."
     />
     <button
-    onClick={handlesearchbtn}
       type="submit"
       className="text-white absolute end-0 bottom-0.5  bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-2 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
     >
+      <Link to={`/${search}`}>
      <svg
         width={20}
         height={20}
@@ -68,12 +55,11 @@ e.preventDefault()
           strokeLinecap="round"
         />
       </svg>  
+      </Link>
     </button>
   </div>
-</form>
-
+</div>
   </li>
-
  <li><Link to="/wishlist">
  <svg
         width={20}
@@ -83,7 +69,6 @@ e.preventDefault()
         xmlns="http://www.w3.org/2000/svg"
       >
         <path
-        
         className='dark:stroke-white'
           fillRule="evenodd"
           clipRule="evenodd"
@@ -94,7 +79,6 @@ e.preventDefault()
         />
       </svg> </Link>
    </li>
-
  <li className=" relative flex">
    <Link to="/cart">
    <svg
@@ -105,7 +89,6 @@ e.preventDefault()
         xmlns="http://www.w3.org/2000/svg"
       >
         <path
-        
         className='dark:stroke-white'
           d="M3 3L5.5 3L6 5M6 5L8 13M6 5H21L19 13H8M8 13H7.5C6.67157 13 6 13.6716 6 14.5C6 15.3284 6.67157 16 7.5 16H19M19 20C19 20.5523 18.5523 21 18 21C17.4477 21 17 20.5523 17 20C17 19.4477 17.4477 19 18 19C18.5523 19 19 19.4477 19 20ZM9 20C9 20.5523 8.55228 21 8 21C7.44772 21 7 20.5523 7 20C7 19.4477 7.44772 19 8 19C8.55228 19 9 19.4477 9 20Z"
           stroke="black"

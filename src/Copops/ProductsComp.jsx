@@ -24,14 +24,13 @@ function ProductsComp() {
 		<>
 		<div className='w-[80%] mx-auto   dark:bg-gray-900'>
 
-		
 		<Slider {...settings}>
         {products.map((product) => (
               <div
                 key={product.id}
                 className="bg-white dark:bg-blue-gray-900 shadow-md dark:border-x-8 dark:border-gray-900 border-x-8 border-white rounded-lg px-10 py-10"
               >
-                <Link to={`/${product.id}`}>
+                <Link to={`/product/${product.id}`}>
                   <img
                     src={product.thumbnail}
                     alt={product.title}

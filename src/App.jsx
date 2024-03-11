@@ -16,11 +16,11 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/home" element={<Products />} />
-          <Route path="/:prodid" element={<ProductLandingPage />} />
+          <Route path="/product/:prodid" element={<ProductLandingPage />} />
           <Route path="/cart" element={<Cart/>} />
           <Route path="/wishlist" element={<WishList/>}/>
           <Route path="/" element={<Home/>}/>
-          <Route path="search" element={<ProductSearchpage/>}/>
+          <Route path="/:prodname" element={<ProductSearchpage/>}/>
         </Routes>
       </BrowserRouter>
       </CartContextProvider>

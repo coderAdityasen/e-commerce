@@ -120,8 +120,6 @@ function ProductLandingPage() {
         ) : (
           <p>Loading...</p>
         )}
-
-        
       </div>
       <div>
           <ProductsComp/>

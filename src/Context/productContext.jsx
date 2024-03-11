@@ -9,8 +9,7 @@ export const CartContext = createContext();
 export const CartContextProvider = ({ children }) => {
   const [themeMode, setThemeMode] = useState("light")
 
-
-  const [search, setSearch] = useState("");
+  const [search , setSearch] = useState("")
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [showModal, setshowModal] = useState(false);
@@ -20,24 +19,35 @@ export const CartContextProvider = ({ children }) => {
       : []
   );
   useEffect(() => {
+    const controller = new AbortController();
     setLoading(true);
-  
+
     const fetchData = async () => {
       try {
         const fetchedData = await axios.get(
-          "https://dummyjson.com/products"
+          `https://dummyjson.com/products/search?q=${search}`,
+          {
+            signal: controller.signal
+          }
         );
         setProducts(fetchedData.data.products);
         setLoading(false);
       } catch (error) {
-        console.error("Error fetching data:" , error);
+        if (axios.isCancel(error)) {
+          console.log("request cancelled");
+          return;
+        }
+        console.error("Error fetching data:", error);
         setLoading(false);
       }
     };
-  
+
     fetchData();
-  
-  }, []);
+
+    return () => {
+      controller.abort();
+    };
+  }, [search]);
   
   const lightTheme = () => {
     setThemeMode("light")
