@@ -5,6 +5,11 @@ import ThemeBtn from '../Components/ThemeButton';
 
 function Navbar() {
 	const { cartIteams , search , setSearch } = useContext(CartContext);
+  const [inputval , setinputval] = useState("")
+
+  const handleSearchButtonClick = () => {
+    setSearch(inputval); 
+  };
 
 	return (
 		<>
@@ -19,7 +24,7 @@ function Navbar() {
 
 <ul className="z-[1] flex gap-5 items-center justify-end ">
   <li>
-    <div  className="max-w-md mx-auto">
+    <form onSubmit={(e) => { e.preventDefault()}} className="max-w-md mx-auto">
   <label
     htmlFor="default-search"
     className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"
@@ -28,18 +33,19 @@ function Navbar() {
   </label>
   <div className="relative">
     <input
-    value={search}
-    onChange={(e)=>setSearch(e.target.value)}
+    value={inputval}
+    onChange={(e)=>setinputval(e.target.value)}
       type="search"
       id="default-search"
       className="block w-full px-6 py-2 ps-2 text-sm text-gray-900 border border-gray-300 rounded-md bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
       placeholder="Search iphone,shirts ..."
     />
     <button
+    onClick={handleSearchButtonClick}
       type="submit"
       className="text-white absolute end-0 bottom-0.5  bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-2 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
     >
-      <Link to={`/${search}`}>
+      <Link to={`/${inputval}`}>
      <svg
         width={20}
         height={20}
@@ -58,7 +64,7 @@ function Navbar() {
       </Link>
     </button>
   </div>
-</div>
+</form>
   </li>
  <li><Link to="/wishlist">
  <svg
