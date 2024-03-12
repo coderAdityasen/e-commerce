@@ -1,18 +1,33 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { CartContext } from '../Context/productContext'
 import { Link, useParams } from 'react-router-dom'
 import Navbar from './Navbar';
 
 function ProductSearchpage() {
-	const {prodname} = useParams;
-
+  const [priceFilter, setPriceFilter] = useState(100)
 	const {products} = useContext(CartContext)
-	
+
+  const filteredProducts = products.filter(product => product.price <= priceFilter);
+
+  
 	return (
 		<>
     <Navbar/>
 		<div className='mx-auto py-20'>
-		{products.map((product) => (
+      <div className='flex items-center gap-x-1'>
+          <input 
+            type="range"
+            min={6}
+            max={1000}
+            value={priceFilter}
+            className='cursor-pointer'
+            onChange={(e) => setPriceFilter(e.target.value)}
+          />
+          <label>Price: ₹{priceFilter}</label>
+        </div>
+      <div>
+      {filteredProducts.map((product) =>
+      (
               <div
                 key={product.id}
                 className="bg-white w-8/12 flex dark:bg-blue-gray-900 mx-auto shadow-md dark:border-x-8 dark:border-gray-900 rounded-lg px-10 py-10 my-10"
@@ -36,6 +51,8 @@ function ProductSearchpage() {
                 </Link>
               </div>
             ))}
+      </div>
+		
 		</div>
 
 		</>
