@@ -23,9 +23,9 @@ function ProductSearchpage() {
             className='cursor-pointer'
             onChange={(e) => setPriceFilter(e.target.value)}
           />
-          <label>Price: ₹{priceFilter}</label>
+          <label className='dark:text-white'>Price: ₹{priceFilter}</label>
         </div>
-      <div>
+      <div className='h-[100vh] overflow-y-auto '>
       {filteredProducts.map((product) =>
       (
               <div

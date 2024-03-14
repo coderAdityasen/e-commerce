@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { CartContext } from "../Context/productContext";
 import Navbar from "../Copops/Navbar";
+import Noitemwishlist from "./Noitemwishlist";
 
 function WishList() {
   const {
@@ -20,14 +21,7 @@ function WishList() {
       
          <Navbar />
         {wishlistItems.length === 0 ? (
-          <div className="w-full mx-auto text-center">
-            <h1 className=" dark:text-white py-32 font-bold text-center text-4xl">
-              Wishlist is Empty
-            </h1>
-            <span className="text-green-600 text-2xl dark:text-blue-300 ">
-              <Link to="/">Add Some Items From Here</Link>
-            </span>
-          </div>
+          <Noitemwishlist/>
         ) : (
           <>
 
